@@ -4,6 +4,8 @@ Aplikasi Python sederhana berbasis Streamlit untuk membuat prompt photoshoot jer
 
 Aplikasi ini tidak membuat gambar langsung. Hasil prompt bisa Anda copy atau download sebagai file TXT, lalu digunakan di ChatGPT atau image generator bersama gambar desain jersey yang Anda upload.
 
+Dropdown aplikasi dibuat dalam bahasa Indonesia agar mudah dipahami. Prompt akhir tetap otomatis disusun dalam bahasa Inggris karena biasanya lebih cocok untuk image generator.
+
 ## Isi Project
 
 ```text
@@ -16,6 +18,9 @@ sports_jersey_prompt_generator/
 ## Fitur
 
 - Preset untuk jenis model, jumlah model, pose, ekspresi, komposisi, background sport, lighting, camera angle, lens look, outfit, mood, dan tipe output.
+- Pilihan jenis olahraga, seperti sepak bola, futsal, running, badminton, padel, basket, voli, tenis, gym, dan lainnya.
+- Data preset lebih banyak agar hasil random tidak monoton.
+- Minimal 30+ model, 50+ pose, 30+ background, 20+ lighting, 20+ camera angle, 20+ mood, 20+ outfit, dan 15+ komposisi.
 - Tombol Generate Prompt.
 - Tombol Generate Random Prompt.
 - Tombol Copy/Download Prompt TXT.

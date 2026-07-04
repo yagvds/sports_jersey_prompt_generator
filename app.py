@@ -29,249 +29,478 @@ NEGATIVE_PROMPT = (
 )
 
 
+def p(label, prompt):
+    return {"label": label, "prompt": prompt}
+
+
 PRESETS = {
+    "olahraga": [
+        p("Sepak bola", "football / soccer"),
+        p("Futsal", "futsal"),
+        p("Lari / running", "running"),
+        p("Badminton", "badminton"),
+        p("Padel", "padel tennis"),
+        p("Basket", "basketball"),
+        p("Voli", "volleyball"),
+        p("Tenis", "tennis"),
+        p("Sepeda", "cycling"),
+        p("Gym / fitness", "gym fitness training"),
+        p("Rugby", "rugby"),
+        p("Baseball", "baseball"),
+        p("Hoki", "field hockey"),
+        p("Esports jersey", "esports team jersey"),
+        p("Training olahraga umum", "general sports training"),
+    ],
     "jenis_model": [
-        "male professional football player",
-        "female professional football player",
-        "young adult athletic model",
-        "senior team captain",
-        "youth academy player",
-        "futsal player",
-        "goalkeeper",
-        "winger with athletic build",
-        "midfielder with natural sports physique",
-        "sportswear campaign model",
-        "diverse professional sports models",
+        p("Atlet pria profesional", "male professional athlete"),
+        p("Atlet wanita profesional", "female professional athlete"),
+        p("Model pria sporty", "male athletic sportswear model"),
+        p("Model wanita sporty", "female athletic sportswear model"),
+        p("Kapten tim pria", "male team captain"),
+        p("Kapten tim wanita", "female team captain"),
+        p("Atlet muda akademi", "youth academy athlete"),
+        p("Atlet senior berpengalaman", "experienced senior athlete"),
+        p("Runner pria", "male runner"),
+        p("Runner wanita", "female runner"),
+        p("Pemain badminton pria", "male badminton player"),
+        p("Pemain badminton wanita", "female badminton player"),
+        p("Pemain padel pria", "male padel player"),
+        p("Pemain padel wanita", "female padel player"),
+        p("Pemain basket pria", "male basketball player"),
+        p("Pemain basket wanita", "female basketball player"),
+        p("Pemain voli pria", "male volleyball player"),
+        p("Pemain voli wanita", "female volleyball player"),
+        p("Pemain tenis pria", "male tennis player"),
+        p("Pemain tenis wanita", "female tennis player"),
+        p("Atlet gym / fitness", "fitness athlete"),
+        p("Pemain futsal pria", "male futsal player"),
+        p("Pemain futsal wanita", "female futsal player"),
+        p("Kiper", "goalkeeper"),
+        p("Defender / pemain bertahan", "defensive athlete"),
+        p("Pemain sayap cepat", "fast winger athlete"),
+        p("Midfielder / pengatur permainan", "midfielder playmaker"),
+        p("Tim campuran pria dan wanita", "mixed male and female sports team"),
+        p("Duo atlet untuk campaign", "two-athlete sportswear campaign models"),
+        p("Grup atlet profesional", "group of professional athletes"),
+        p("Model brand ambassador", "sportswear brand ambassador model"),
+        p("Atlet urban street sport", "urban street sport athlete"),
     ],
     "jumlah_model": [
-        "1 model",
-        "2 models",
-        "3 models",
-        "5 models team lineup",
-        "full starting eleven team group",
+        p("1 orang", "1 model"),
+        p("2 orang", "2 models"),
+        p("3 orang", "3 models"),
+        p("5 orang lineup tim", "5 models team lineup"),
+        p("Tim besar / full squad", "full team group"),
     ],
     "pose": [
-        "standing confidently with arms relaxed",
-        "crossed arms hero pose",
-        "walking naturally toward camera",
-        "adjusting jersey collar",
-        "holding a football under one arm",
-        "tying boot laces before match",
-        "celebration pose after scoring",
-        "pre-match focus pose",
-        "sprint action pose",
-        "passing the ball in motion",
-        "team huddle pose",
-        "locker room seated portrait",
+        p("Berdiri santai percaya diri", "standing confidently with relaxed arms"),
+        p("Tangan menyilang", "crossed arms hero pose"),
+        p("Berjalan ke arah kamera", "walking naturally toward camera"),
+        p("Memegang ujung kerah jersey", "adjusting the jersey collar"),
+        p("Menarik bagian depan jersey", "lightly pulling the front of the jersey to show fabric detail"),
+        p("Menunjuk logo di dada", "pointing to the chest logo area naturally"),
+        p("Memegang bola di samping badan", "holding a ball under one arm"),
+        p("Mengikat sepatu olahraga", "tying sport shoes before training"),
+        p("Pemanasan sebelum latihan", "warming up before training"),
+        p("Stretching ringan", "doing a light athletic stretch"),
+        p("Jogging pelan", "light jogging motion"),
+        p("Sprint cepat", "fast sprint action pose"),
+        p("Lari di tikungan track", "running around a track curve"),
+        p("Start lari dari garis start", "starting run from the start line"),
+        p("Selebrasi kemenangan", "natural celebration after winning"),
+        p("Selebrasi setelah mencetak poin", "celebration pose after scoring"),
+        p("Fokus sebelum pertandingan", "pre-match focused pose"),
+        p("Duduk di ruang ganti", "seated locker room portrait"),
+        p("Berdiri di lorong stadion", "standing in a stadium tunnel"),
+        p("Team huddle / kumpul tim", "team huddle pose"),
+        p("Lineup tim menghadap kamera", "team lineup facing camera"),
+        p("Melompat untuk smash", "jumping for a smash action"),
+        p("Ayunan raket badminton", "badminton racket swing action"),
+        p("Servis badminton", "badminton serve pose"),
+        p("Ayunan raket padel", "padel racket swing action"),
+        p("Ready position padel", "padel ready position"),
+        p("Dribble bola basket", "basketball dribble action"),
+        p("Shooting basket", "basketball shooting pose"),
+        p("Passing bola", "passing the ball in motion"),
+        p("Menendang bola", "kicking a ball naturally"),
+        p("Kontrol bola dekat kaki", "close ball control near the feet"),
+        p("Menerima umpan", "receiving a pass"),
+        p("Block voli", "volleyball blocking action"),
+        p("Smash voli", "volleyball spike action"),
+        p("Pose after workout", "post-workout confident pose"),
+        p("Mengangkat dumbbell ringan", "holding a light dumbbell naturally"),
+        p("Berjalan di studio campaign", "walking in a sportswear studio campaign"),
+        p("Menoleh ke samping", "looking slightly to the side"),
+        p("Menatap kamera dengan tenang", "looking calmly into the camera"),
+        p("Tertawa natural bersama tim", "natural team laugh"),
+        p("Berbicara dengan rekan tim", "talking naturally with a teammate"),
+        p("Mengikat rambut sebelum latihan", "tying hair before training"),
+        p("Memakai wristband", "adjusting a wristband"),
+        p("Membawa tas olahraga", "carrying a sports bag"),
+        p("Minum dari botol olahraga", "drinking from a sport bottle naturally"),
+        p("Duduk di bench pemain", "sitting on the player bench"),
+        p("Bersandar di dinding urban court", "leaning against an urban court wall"),
+        p("Foto close-up bagian jersey", "close-up pose emphasizing jersey texture"),
+        p("Full body pose untuk katalog", "full-body catalog pose"),
+        p("Pose campaign premium", "premium sportswear campaign pose"),
+        p("Pose candid natural", "natural candid athletic pose"),
+        p("Berjalan bersama tim", "walking together with teammates"),
+        p("Berdoa / fokus sebelum game", "quiet focused pre-game moment"),
     ],
     "ekspresi": [
-        "calm and confident expression",
-        "serious match day focus",
-        "natural relaxed smile",
-        "intense competitive look",
-        "proud captain expression",
-        "energetic celebration expression",
-        "determined training expression",
-        "friendly sports campaign expression",
+        p("Tenang dan percaya diri", "calm and confident expression"),
+        p("Fokus serius", "serious focused expression"),
+        p("Senyum natural", "natural relaxed smile"),
+        p("Intens kompetitif", "intense competitive look"),
+        p("Bangga seperti kapten", "proud captain expression"),
+        p("Enerjik setelah menang", "energetic victory expression"),
+        p("Semangat latihan", "determined training expression"),
+        p("Ramah untuk campaign", "friendly sports campaign expression"),
     ],
     "komposisi": [
-        "clean professional sports portrait composition",
-        "full body fashion campaign composition",
-        "half body editorial sports composition",
-        "dynamic action composition with realistic motion",
-        "team poster composition",
-        "centered product-focused jersey composition",
-        "cinematic match day composition",
-        "minimal campaign layout with strong jersey visibility",
+        p("Portrait profesional bersih", "clean professional sports portrait composition"),
+        p("Full body seluruh badan", "full-body sportswear campaign composition"),
+        p("Half body pinggang ke atas", "half-body editorial sports composition"),
+        p("Action shot dinamis", "dynamic action composition with realistic motion"),
+        p("Poster tim", "team poster composition"),
+        p("Jersey jadi fokus utama", "centered product-focused jersey composition"),
+        p("Cinematic match day", "cinematic match day composition"),
+        p("Minimal modern campaign", "minimal modern sportswear campaign layout"),
+        p("Close-up detail bahan", "close-up jersey fabric detail composition"),
+        p("Wide shot lokasi terlihat", "wide environmental sports composition"),
+        p("Candid natural", "natural candid sports photography composition"),
+        p("Editorial majalah olahraga", "sports magazine editorial composition"),
+        p("Lookbook sportswear", "sportswear lookbook composition"),
+        p("Hero shot brand campaign", "hero shot brand campaign composition"),
+        p("Before match story", "pre-match storytelling composition"),
+        p("After training story", "post-training storytelling composition"),
     ],
     "background": [
-        "football stadium",
-        "futsal court",
-        "stadium tunnel",
-        "locker room",
-        "training ground",
-        "running track",
-        "gym sport campaign",
-        "night stadium floodlight",
-        "urban football court",
-        "professional studio sportswear campaign",
-        "grass pitch during golden hour",
-        "indoor arena with clean sport branding",
-        "stadium seats background",
-        "concrete street football environment",
-        "rainy match day stadium",
+        p("Stadion sepak bola", "football stadium"),
+        p("Lapangan futsal indoor", "indoor futsal court"),
+        p("Lorong stadion", "stadium tunnel"),
+        p("Ruang ganti pemain", "locker room"),
+        p("Lapangan latihan rumput", "grass training ground"),
+        p("Lintasan lari", "running track"),
+        p("Gym sport campaign", "gym sport campaign environment"),
+        p("Stadion malam floodlight", "night stadium floodlight"),
+        p("Lapangan bola urban", "urban football court"),
+        p("Studio campaign profesional", "professional studio sportswear campaign"),
+        p("Lapangan rumput golden hour", "grass pitch during golden hour"),
+        p("Arena indoor bersih", "clean indoor sports arena"),
+        p("Tribun stadion", "stadium seats background"),
+        p("Street court beton", "concrete street sport court"),
+        p("Stadion hujan ringan", "rainy match day stadium"),
+        p("Lapangan badminton indoor", "indoor badminton court"),
+        p("Lapangan padel modern", "modern padel court"),
+        p("Lapangan basket indoor", "indoor basketball court"),
+        p("Lapangan basket outdoor", "outdoor basketball court"),
+        p("Lapangan voli indoor", "indoor volleyball court"),
+        p("Lapangan tenis outdoor", "outdoor tennis court"),
+        p("Tepi track dengan tribun", "trackside stadium environment"),
+        p("Area start race", "race starting line area"),
+        p("Jalan kota untuk running", "urban running street"),
+        p("Taman kota sporty", "city park sport environment"),
+        p("Rooftop sport court", "rooftop sport court"),
+        p("Training camp outdoor", "outdoor training camp"),
+        p("Area bench pemain", "player bench area"),
+        p("Backdrop press conference", "sports press conference backdrop"),
+        p("Studio hitam premium", "premium black studio sportswear set"),
+        p("Studio putih bersih", "clean white studio sportswear set"),
+        p("Gudang industrial sporty", "industrial warehouse sport campaign set"),
+        p("Arena esports team room", "esports team room"),
+        p("Velodrome / arena sepeda", "cycling velodrome"),
+        p("Jalur sepeda outdoor", "outdoor cycling route"),
+        p("Trek trail ringan", "light trail running route"),
+        p("Lapangan rugby", "rugby field"),
+        p("Lapangan baseball", "baseball field"),
+        p("Lapangan hoki", "field hockey pitch"),
+        p("Indoor performance lab", "indoor athletic performance lab"),
     ],
     "lighting": [
-        "natural daylight",
-        "soft studio lighting",
-        "cinematic stadium lighting",
-        "golden hour sunlight",
-        "night floodlight lighting",
-        "dramatic side lighting",
-        "clean commercial sportswear lighting",
-        "soft locker room practical lighting",
-        "bright indoor futsal court lighting",
+        p("Cahaya siang natural", "natural daylight"),
+        p("Soft studio light", "soft studio lighting"),
+        p("Cinematic stadium light", "cinematic stadium lighting"),
+        p("Golden hour sore", "golden hour sunlight"),
+        p("Lampu stadion malam", "night floodlight lighting"),
+        p("Side light dramatis", "dramatic side lighting"),
+        p("Commercial clean light", "clean commercial sportswear lighting"),
+        p("Cahaya ruang ganti lembut", "soft locker room practical lighting"),
+        p("Lampu futsal terang", "bright indoor court lighting"),
+        p("Backlight tipis", "subtle backlight rim lighting"),
+        p("Overcast natural", "soft overcast natural light"),
+        p("Pagi cerah", "fresh morning light"),
+        p("Cahaya sunset hangat", "warm sunset sports lighting"),
+        p("High contrast editorial", "high contrast editorial lighting"),
+        p("Low-key premium", "premium low-key studio lighting"),
+        p("White studio even light", "even white studio lighting"),
+        p("Action freeze lighting", "sharp action-freeze sports lighting"),
+        p("Indoor arena light", "professional indoor arena lighting"),
+        p("Rainy night reflection", "rainy night reflective stadium lighting"),
+        p("Natural window light", "natural window light"),
+        p("Softbox campaign", "large softbox campaign lighting"),
     ],
     "camera_angle": [
-        "eye-level camera angle",
-        "slightly low angle",
-        "low angle hero shot",
-        "slightly high angle",
-        "side angle",
-        "three-quarter angle",
-        "front-facing camera angle",
-        "over-the-shoulder sport campaign angle",
+        p("Sejajar mata", "eye-level camera angle"),
+        p("Sedikit dari bawah", "slightly low angle"),
+        p("Hero shot dari bawah", "low angle hero shot"),
+        p("Sedikit dari atas", "slightly high angle"),
+        p("Dari samping", "side angle"),
+        p("Tiga perempat", "three-quarter angle"),
+        p("Menghadap depan", "front-facing camera angle"),
+        p("Over shoulder", "over-the-shoulder sports angle"),
+        p("Close-up dada jersey", "close-up chest jersey angle"),
+        p("Full body eye level", "full-body eye-level angle"),
+        p("Wide angle lingkungan", "wide environmental angle"),
+        p("Tracking shot natural", "natural tracking shot angle"),
+        p("Low angle action", "low angle action sports shot"),
+        p("Side profile portrait", "side profile portrait angle"),
+        p("Diagonal dynamic angle", "dynamic diagonal action angle"),
+        p("Candid dari jauh", "candid telephoto angle from distance"),
+        p("Bench level", "bench-level sports angle"),
+        p("Tunnel depth angle", "stadium tunnel depth angle"),
+        p("Top-down ringan", "subtle top-down athletic angle"),
+        p("Product-first angle", "product-first jersey visibility angle"),
     ],
     "lens_look": [
-        "realistic 35mm lens look",
-        "50mm portrait lens look",
-        "85mm professional portrait lens look",
-        "24-70mm sports campaign lens look",
-        "shallow depth of field",
-        "crisp editorial sports photography",
-        "natural documentary sports photography",
-        "high-end commercial sportswear photography",
+        p("35mm realistis", "realistic 35mm lens look"),
+        p("50mm portrait", "50mm portrait lens look"),
+        p("85mm premium portrait", "85mm professional portrait lens look"),
+        p("24-70mm campaign", "24-70mm sports campaign lens look"),
+        p("Background blur halus", "shallow depth of field"),
+        p("Editorial tajam", "crisp editorial sports photography"),
+        p("Dokumenter natural", "natural documentary sports photography"),
+        p("Commercial high-end", "high-end commercial sportswear photography"),
     ],
     "outfit": [
-        "matching football shorts",
-        "black athletic shorts",
-        "white athletic shorts",
-        "training pants",
-        "compression leggings",
-        "football socks and boots",
-        "futsal shoes and sport socks",
-        "clean sportswear campaign styling",
+        p("Celana olahraga senada", "matching athletic shorts"),
+        p("Celana pendek hitam", "black athletic shorts"),
+        p("Celana pendek putih", "white athletic shorts"),
+        p("Training pants", "training pants"),
+        p("Legging kompresi", "compression leggings"),
+        p("Kaos kaki dan sepatu bola", "football socks and boots"),
+        p("Sepatu futsal", "futsal shoes and sport socks"),
+        p("Styling campaign bersih", "clean sportswear campaign styling"),
+        p("Celana running pendek", "running shorts"),
+        p("Tight running shorts", "performance running shorts"),
+        p("Celana badminton", "badminton shorts"),
+        p("Rok olahraga wanita", "women's athletic skirt"),
+        p("Celana padel", "padel athletic shorts"),
+        p("Celana basket", "basketball shorts"),
+        p("Celana voli", "volleyball shorts"),
+        p("Jogger sport", "sport jogger pants"),
+        p("Base layer lengan panjang", "long sleeve base layer under jersey"),
+        p("Compression arm sleeve", "compression arm sleeve"),
+        p("Headband / wristband", "headband and wristband sport styling"),
+        p("Sepatu training modern", "modern training shoes"),
+        p("Sepatu running", "running shoes"),
+        p("Sepatu court indoor", "indoor court shoes"),
     ],
     "mood": [
-        "realistic professional photoshoot",
-        "natural match day atmosphere",
-        "premium sportswear campaign",
-        "cinematic football editorial",
-        "clean modern club announcement",
-        "high energy training session",
-        "confident team identity campaign",
-        "authentic grassroots football mood",
+        p("Photoshoot profesional realistis", "realistic professional photoshoot"),
+        p("Suasana match day", "natural match day atmosphere"),
+        p("Campaign sportswear premium", "premium sportswear campaign"),
+        p("Cinematic olahraga", "cinematic sports editorial"),
+        p("Pengumuman klub modern", "clean modern club announcement"),
+        p("Latihan penuh energi", "high energy training session"),
+        p("Identitas tim percaya diri", "confident team identity campaign"),
+        p("Grassroots natural", "authentic grassroots sport mood"),
+        p("Luxury minimal", "luxury minimal sportswear mood"),
+        p("Urban street sport", "urban street sport mood"),
+        p("Fresh morning training", "fresh morning training mood"),
+        p("Intense competition", "intense competition mood"),
+        p("Friendly community sport", "friendly community sport mood"),
+        p("Elite athlete campaign", "elite athlete campaign mood"),
+        p("Clean catalog product", "clean product catalog mood"),
+        p("Rainy dramatic sport", "rainy dramatic sports mood"),
+        p("Youth academy energy", "youth academy energy mood"),
+        p("Team unity", "team unity mood"),
+        p("Performance lab", "performance testing lab mood"),
+        p("Confident personal branding", "confident personal branding mood"),
+        p("Documentary candid", "documentary candid sport mood"),
     ],
     "output": [
-        "portrait Instagram 4:5",
-        "landscape 16:9",
-        "square 1:1",
-        "vertical story 9:16",
+        p("Portrait Instagram 4:5", "portrait Instagram 4:5, optimized for feed post"),
+        p("Landscape 16:9", "landscape 16:9, wide campaign banner style"),
+        p("Square 1:1", "square 1:1, balanced social media post"),
+        p("Story vertikal 9:16", "vertical story 9:16, full-body composition with safe margins"),
     ],
 }
 
-
-OUTPUT_GUIDANCE = {
-    "portrait Instagram 4:5": "Final image format: portrait Instagram 4:5, optimized for feed post.",
-    "landscape 16:9": "Final image format: landscape 16:9, wide campaign banner style.",
-    "square 1:1": "Final image format: square 1:1, balanced social media post.",
-    "vertical story 9:16": "Final image format: vertical story 9:16, full-body composition with safe margins.",
-}
 
 QUICK_PRESETS = {
     "Match Day": {
-        "jenis_model": "male professional football player",
-        "jumlah_model": "1 model",
-        "pose": "walking naturally toward camera",
-        "ekspresi": "serious match day focus",
-        "komposisi": "cinematic match day composition",
-        "background": "football stadium",
-        "lighting": "cinematic stadium lighting",
-        "camera_angle": "slightly low angle",
-        "lens_look": "50mm portrait lens look",
-        "outfit": "football socks and boots",
-        "mood": "natural match day atmosphere",
-        "output": "portrait Instagram 4:5",
+        "olahraga": "Sepak bola",
+        "jenis_model": "Atlet pria profesional",
+        "jumlah_model": "1 orang",
+        "pose": "Berjalan ke arah kamera",
+        "ekspresi": "Fokus serius",
+        "komposisi": "Cinematic match day",
+        "background": "Stadion sepak bola",
+        "lighting": "Cinematic stadium light",
+        "camera_angle": "Sedikit dari bawah",
+        "lens_look": "50mm portrait",
+        "outfit": "Kaos kaki dan sepatu bola",
+        "mood": "Suasana match day",
+        "output": "Portrait Instagram 4:5",
     },
-    "Futsal Court": {
-        "jenis_model": "futsal player",
-        "jumlah_model": "2 models",
-        "pose": "passing the ball in motion",
-        "ekspresi": "determined training expression",
-        "komposisi": "dynamic action composition with realistic motion",
-        "background": "futsal court",
-        "lighting": "bright indoor futsal court lighting",
-        "camera_angle": "three-quarter angle",
-        "lens_look": "natural documentary sports photography",
-        "outfit": "futsal shoes and sport socks",
-        "mood": "high energy training session",
-        "output": "landscape 16:9",
+    "Running": {
+        "olahraga": "Lari / running",
+        "jenis_model": "Runner wanita",
+        "jumlah_model": "1 orang",
+        "pose": "Lari di tikungan track",
+        "ekspresi": "Semangat latihan",
+        "komposisi": "Action shot dinamis",
+        "background": "Lintasan lari",
+        "lighting": "Pagi cerah",
+        "camera_angle": "Tracking shot natural",
+        "lens_look": "Dokumenter natural",
+        "outfit": "Celana running pendek",
+        "mood": "Fresh morning training",
+        "output": "Portrait Instagram 4:5",
+    },
+    "Badminton": {
+        "olahraga": "Badminton",
+        "jenis_model": "Pemain badminton pria",
+        "jumlah_model": "1 orang",
+        "pose": "Ayunan raket badminton",
+        "ekspresi": "Intens kompetitif",
+        "komposisi": "Action shot dinamis",
+        "background": "Lapangan badminton indoor",
+        "lighting": "Indoor arena light",
+        "camera_angle": "Tiga perempat",
+        "lens_look": "24-70mm campaign",
+        "outfit": "Celana badminton",
+        "mood": "Intense competition",
+        "output": "Landscape 16:9",
+    },
+    "Padel": {
+        "olahraga": "Padel",
+        "jenis_model": "Pemain padel wanita",
+        "jumlah_model": "2 orang",
+        "pose": "Ready position padel",
+        "ekspresi": "Tenang dan percaya diri",
+        "komposisi": "Full body seluruh badan",
+        "background": "Lapangan padel modern",
+        "lighting": "Cahaya siang natural",
+        "camera_angle": "Sejajar mata",
+        "lens_look": "35mm realistis",
+        "outfit": "Celana padel",
+        "mood": "Campaign sportswear premium",
+        "output": "Square 1:1",
     },
     "Studio Campaign": {
-        "jenis_model": "sportswear campaign model",
-        "jumlah_model": "1 model",
-        "pose": "crossed arms hero pose",
-        "ekspresi": "calm and confident expression",
-        "komposisi": "centered product-focused jersey composition",
-        "background": "professional studio sportswear campaign",
-        "lighting": "clean commercial sportswear lighting",
-        "camera_angle": "eye-level camera angle",
-        "lens_look": "85mm professional portrait lens look",
-        "outfit": "clean sportswear campaign styling",
-        "mood": "premium sportswear campaign",
-        "output": "square 1:1",
+        "olahraga": "Training olahraga umum",
+        "jenis_model": "Model brand ambassador",
+        "jumlah_model": "1 orang",
+        "pose": "Pose campaign premium",
+        "ekspresi": "Tenang dan percaya diri",
+        "komposisi": "Jersey jadi fokus utama",
+        "background": "Studio campaign profesional",
+        "lighting": "Commercial clean light",
+        "camera_angle": "Sejajar mata",
+        "lens_look": "85mm premium portrait",
+        "outfit": "Styling campaign bersih",
+        "mood": "Campaign sportswear premium",
+        "output": "Square 1:1",
     },
     "Team Poster": {
-        "jenis_model": "diverse professional sports models",
-        "jumlah_model": "5 models team lineup",
-        "pose": "team huddle pose",
-        "ekspresi": "proud captain expression",
-        "komposisi": "team poster composition",
-        "background": "night stadium floodlight",
-        "lighting": "night floodlight lighting",
-        "camera_angle": "low angle hero shot",
-        "lens_look": "high-end commercial sportswear photography",
-        "outfit": "matching football shorts",
-        "mood": "confident team identity campaign",
-        "output": "landscape 16:9",
+        "olahraga": "Training olahraga umum",
+        "jenis_model": "Grup atlet profesional",
+        "jumlah_model": "5 orang lineup tim",
+        "pose": "Lineup tim menghadap kamera",
+        "ekspresi": "Bangga seperti kapten",
+        "komposisi": "Poster tim",
+        "background": "Stadion malam floodlight",
+        "lighting": "Lampu stadion malam",
+        "camera_angle": "Hero shot dari bawah",
+        "lens_look": "Commercial high-end",
+        "outfit": "Celana olahraga senada",
+        "mood": "Identitas tim percaya diri",
+        "output": "Landscape 16:9",
     },
 }
 
 
-def pick_random_values() -> dict[str, str]:
-    return {key: random.choice(values) for key, values in PRESETS.items()}
+def labels_for(key):
+    return [item["label"] for item in PRESETS[key]]
 
 
-def build_prompt(values: dict[str, str], custom_note: str) -> str:
+def prompt_for(key, label):
+    for item in PRESETS[key]:
+        if item["label"] == label:
+            return item["prompt"]
+    return str(label)
+
+
+def default_values():
+    return {key: values[0]["label"] for key, values in PRESETS.items()}
+
+
+def valid_value(key, value):
+    labels = labels_for(key)
+    return value if value in labels else labels[0]
+
+
+def pick_random_values():
+    return {key: random.choice(labels_for(key)) for key in PRESETS}
+
+
+def build_prompt(values, custom_note):
     note = custom_note.strip()
     note_line = f"\nAdditional direction: {note}" if note else ""
 
-    return f"""Realistic professional sports jersey photoshoot.
+    sport = prompt_for("olahraga", values["olahraga"])
+    model = prompt_for("jenis_model", values["jenis_model"])
+    model_count = prompt_for("jumlah_model", values["jumlah_model"])
+    pose = prompt_for("pose", values["pose"])
+    expression = prompt_for("ekspresi", values["ekspresi"])
+    composition = prompt_for("komposisi", values["komposisi"])
+    background = prompt_for("background", values["background"])
+    lighting = prompt_for("lighting", values["lighting"])
+    camera_angle = prompt_for("camera_angle", values["camera_angle"])
+    lens_look = prompt_for("lens_look", values["lens_look"])
+    outfit = prompt_for("outfit", values["outfit"])
+    mood = prompt_for("mood", values["mood"])
+    output = prompt_for("output", values["output"])
 
-Main subject: {values["jumlah_model"]}, {values["jenis_model"]}.
-Pose: {values["pose"]}.
-Expression: {values["ekspresi"]}.
-Composition: {values["komposisi"]}.
-Background: {values["background"]}.
-Lighting: {values["lighting"]}.
-Camera angle: {values["camera_angle"]}.
-Lens look: {values["lens_look"]}.
-Outfit styling: {values["outfit"]}.
-Mood: {values["mood"]}.
-{OUTPUT_GUIDANCE[values["output"]]}{note_line}
+    return f"""Realistic professional sportswear jersey photoshoot.
+
+Sport category: {sport}.
+Main subject: {model_count}, {model}.
+Pose: {pose}.
+Expression: {expression}.
+Composition: {composition}.
+Background: {background}.
+Lighting: {lighting}.
+Camera angle: {camera_angle}.
+Lens look: {lens_look}.
+Outfit styling: {outfit}.
+Mood: {mood}.
+Final image format: {output}.{note_line}
 
 Jersey reference instruction:
 {JERSEY_REFERENCE_TEXT}
 {JERSEY_LOCK_TEXT}
 
-Make the jersey look like real sportswear fabric worn by real athletes. Preserve the exact uploaded jersey design while making the photoshoot natural, realistic, sharp, professional, and ready for a sports club or sportswear campaign.
+Make the uploaded jersey design look like real performance sportswear fabric worn by real athletes. The jersey can be for football, futsal, running, badminton, padel, basketball, volleyball, tennis, gym training, or other sports, based on the selected sport category. Preserve the exact uploaded jersey design while making the photoshoot natural, realistic, sharp, professional, and ready for a sports club, team launch, or sportswear campaign.
 
 {NEGATIVE_PROMPT}
 """
 
 
-def set_random_prompt() -> None:
+def set_random_prompt():
     random_values = pick_random_values()
     st.session_state.selected_values = random_values
     for key, value in random_values.items():
         st.session_state[key] = value
     st.session_state.generated_prompt = build_prompt(
-        st.session_state.selected_values,
+        random_values,
         st.session_state.get("custom_note", ""),
     )
 
 
-def set_quick_preset(preset_name: str) -> None:
+def set_quick_preset(preset_name):
     preset_values = QUICK_PRESETS[preset_name]
     st.session_state.selected_values = preset_values
     for key, value in preset_values.items():
@@ -282,9 +511,9 @@ def set_quick_preset(preset_name: str) -> None:
     )
 
 
-def generate_from_current_selection() -> None:
+def generate_from_current_selection():
     st.session_state.selected_values = {
-        key: st.session_state[key] for key in PRESETS.keys()
+        key: valid_value(key, st.session_state[key]) for key in PRESETS
     }
     st.session_state.generated_prompt = build_prompt(
         st.session_state.selected_values,
@@ -292,13 +521,18 @@ def generate_from_current_selection() -> None:
     )
 
 
-def initialize_state() -> None:
+def initialize_state():
     if "selected_values" not in st.session_state:
-        st.session_state.selected_values = {
-            key: values[0] for key, values in PRESETS.items()
-        }
+        st.session_state.selected_values = default_values()
+
+    st.session_state.selected_values = {
+        key: valid_value(key, st.session_state.selected_values.get(key, labels_for(key)[0]))
+        for key in PRESETS
+    }
+
     for key, value in st.session_state.selected_values.items():
-        st.session_state.setdefault(key, value)
+        st.session_state[key] = valid_value(key, st.session_state.get(key, value))
+
     if "generated_prompt" not in st.session_state:
         st.session_state.generated_prompt = build_prompt(
             st.session_state.selected_values,
@@ -306,7 +540,7 @@ def initialize_state() -> None:
         )
 
 
-def apply_custom_style() -> None:
+def apply_custom_style():
     st.markdown(
         """
         <style>
@@ -340,7 +574,7 @@ def apply_custom_style() -> None:
         }
 
         .app-hero p {
-            max-width: 720px;
+            max-width: 760px;
             font-size: 1.02rem;
             line-height: 1.6;
             margin: 0;
@@ -385,6 +619,16 @@ def apply_custom_style() -> None:
             margin: 10px 0 18px 0;
         }
 
+        .mini-note {
+            background: #eef9f2;
+            border: 1px solid rgba(34, 197, 94, 0.22);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: #14532d;
+            margin-bottom: 12px;
+            font-size: 0.93rem;
+        }
+
         div[data-testid="stVerticalBlockBorderWrapper"] {
             border-color: rgba(15, 23, 42, 0.09);
             box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
@@ -422,14 +666,14 @@ def apply_custom_style() -> None:
     )
 
 
-def render_step_cards() -> None:
+def render_step_cards():
     step_1, step_2, step_3 = st.columns(3)
     with step_1:
         st.markdown(
             """
             <div class="step-card">
-                <strong>1. Pilih gaya foto</strong>
-                <span>Mulai dari preset cepat atau atur detail photoshoot sendiri.</span>
+                <strong>1. Pilih olahraga</strong>
+                <span>Tentukan jersey ini untuk bola, running, badminton, padel, dan lainnya.</span>
             </div>
             """,
             unsafe_allow_html=True,
@@ -438,8 +682,8 @@ def render_step_cards() -> None:
         st.markdown(
             """
             <div class="step-card">
-                <strong>2. Generate prompt</strong>
-                <span>Aplikasi menyusun prompt rapi dengan instruksi jersey tetap sama.</span>
+                <strong>2. Atur gaya foto</strong>
+                <span>Pilih model, pose, lokasi, cahaya, dan mood dengan bahasa sederhana.</span>
             </div>
             """,
             unsafe_allow_html=True,
@@ -448,20 +692,20 @@ def render_step_cards() -> None:
         st.markdown(
             """
             <div class="step-card">
-                <strong>3. Pakai di image generator</strong>
-                <span>Upload desain jersey, lalu tempel prompt yang sudah dibuat.</span>
+                <strong>3. Pakai prompt</strong>
+                <span>Upload desain jersey, lalu tempel prompt ke image generator.</span>
             </div>
             """,
             unsafe_allow_html=True,
         )
 
 
-def render_select(label: str, key: str, help_text: str | None = None) -> None:
-    current_value = st.session_state.selected_values[key]
+def render_select(label, key, help_text=None):
+    current_value = valid_value(key, st.session_state.selected_values[key])
     st.selectbox(
         label,
-        PRESETS[key],
-        index=PRESETS[key].index(current_value),
+        labels_for(key),
+        index=labels_for(key).index(current_value),
         key=key,
         help=help_text,
     )
@@ -480,7 +724,7 @@ st.markdown(
     f"""
     <div class="app-hero">
         <h1>{APP_TITLE}</h1>
-        <p>{APP_SUBTITLE} Cocok untuk membuat prompt jersey bola, futsal, training kit, dan campaign sportswear dari desain jersey yang Anda upload.</p>
+        <p>{APP_SUBTITLE} Bisa dipakai untuk sepak bola, futsal, running, badminton, padel, basket, voli, tenis, gym, dan campaign sportswear lain dari desain jersey yang Anda upload.</p>
     </div>
     """,
     unsafe_allow_html=True,
@@ -488,12 +732,15 @@ st.markdown(
 
 render_step_cards()
 
-st.markdown('<div class="soft-note">Tips utama: upload desain jersey Anda di image generator, lalu gunakan prompt dari aplikasi ini. Prompt sudah mengunci warna, motif, logo, sponsor, nama, nomor, dan detail jersey lainnya agar tidak berubah.</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="soft-note">Tips utama: upload desain jersey Anda di image generator, lalu gunakan prompt dari aplikasi ini. Prompt sudah mengunci warna, motif, logo, sponsor, nama, nomor, dan detail jersey lainnya agar tidak berubah.</div>',
+    unsafe_allow_html=True,
+)
 
 st.markdown('<div class="section-title">Mulai Cepat</div>', unsafe_allow_html=True)
-preset_columns = st.columns(4)
-for column, preset_name in zip(preset_columns, QUICK_PRESETS.keys()):
-    with column:
+preset_columns = st.columns(3)
+for index, preset_name in enumerate(QUICK_PRESETS.keys()):
+    with preset_columns[index % 3]:
         st.button(
             preset_name,
             use_container_width=True,
@@ -506,9 +753,11 @@ config_column, result_column = st.columns([1.02, 0.98], gap="large")
 with config_column:
     with st.container(border=True):
         st.markdown('<div class="section-title">Atur Detail Photoshoot</div>', unsafe_allow_html=True)
-        st.caption("Pilih sesuai kebutuhan. Kalau bingung, biarkan preset awal lalu klik Generate Prompt.")
+        st.caption("Pilihan dibuat dalam bahasa Indonesia. Prompt akhir tetap otomatis disusun dalam bahasa Inggris agar lebih cocok untuk image generator.")
 
-        tab_subject, tab_scene, tab_style = st.tabs(["Model", "Lokasi", "Style"])
+        render_select("Jenis olahraga", "olahraga", "Pilih cabang olahraga utama untuk jersey ini.")
+
+        tab_subject, tab_scene, tab_style = st.tabs(["Model & Pose", "Lokasi & Foto", "Style & Output"])
 
         with tab_subject:
             render_select("Jenis model", "jenis_model", "Siapa yang memakai jersey.")
@@ -557,6 +806,10 @@ with result_column:
     with st.container(border=True):
         st.markdown('<div class="section-title">Hasil Prompt</div>', unsafe_allow_html=True)
         st.caption("Prompt siap ditempel ke ChatGPT atau image generator bersama desain jersey Anda.")
+        st.markdown(
+            '<div class="mini-note">Dropdown memakai bahasa Indonesia. Teks prompt dibuat dalam bahasa Inggris supaya lebih mudah dipahami oleh banyak image generator.</div>',
+            unsafe_allow_html=True,
+        )
 
         st.text_area(
             "Prompt siap pakai",
@@ -579,10 +832,19 @@ with result_column:
 
 with st.sidebar:
     st.markdown("## Ringkasan")
-    st.write("Aplikasi ini khusus untuk prompt photoshoot jersey olahraga realistis.")
+    st.write("Aplikasi ini untuk prompt photoshoot jersey olahraga realistis, tidak hanya jersey bola.")
+    st.markdown("### Data preset")
+    st.write(f"Jenis model: {len(PRESETS['jenis_model'])} pilihan")
+    st.write(f"Pose: {len(PRESETS['pose'])} pilihan")
+    st.write(f"Background: {len(PRESETS['background'])} pilihan")
+    st.write(f"Lighting: {len(PRESETS['lighting'])} pilihan")
+    st.write(f"Camera angle: {len(PRESETS['camera_angle'])} pilihan")
+    st.write(f"Mood: {len(PRESETS['mood'])} pilihan")
+    st.write(f"Outfit: {len(PRESETS['outfit'])} pilihan")
+    st.write(f"Komposisi: {len(PRESETS['komposisi'])} pilihan")
     st.markdown("### Alur pakai")
-    st.write("1. Pilih preset atau klik gaya cepat.")
-    st.write("2. Klik Generate Prompt.")
+    st.write("1. Pilih jenis olahraga.")
+    st.write("2. Pilih preset atau klik Generate Random.")
     st.write("3. Upload desain jersey di image generator.")
     st.write("4. Tempel prompt hasil aplikasi.")
     st.markdown("### Instruksi penting")
